@@ -1,12 +1,12 @@
 from distutils.core import setup
 setup(
-    name = "Slowloris",
-    py_modules = ["slowloris"],
-    entry_points = {"console_scripts": ["slowloris=slowloris:main"]},
+    name = "Slowloris IMproved",
+    py_modules = ["sim"],
+    entry_points = {"console_scripts": ["sim=sim:main"]},
     version = "0.1.2",
-    description = "Low bandwidth DoS tool. Slowloris rewrite in Python.",
-    author = "Gokberk Yaltirakli",
-    author_email = "webdosusb@gmail.com",
-    url = "https://github.com/gkbrk/slowloris",
+    description = "IMproved low bandwidth DoS tool. Slowloris rewrite in Python, original by Gokberk Yaltirakli.",
+    author = "Robin Kanters",
+    author_email = "robin@robinkanters.nl",
+    url = "https://github.com/robinkanters/slowloris",
     keywords = ["dos", "http", "slowloris"]
 )
